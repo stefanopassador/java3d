@@ -33,7 +33,12 @@ public class HelloJava3D extends Applet {
     }
 
     public TransformGroup createSubGraph() {
-        TransformGroup transform = new TransformGroup();
+        Transform3D rotate = new Transform3D(); 
+        rotate.rotX(Math.PI/4.0d);
+        Transform3D rotateY = new Transform3D();
+        rotateY.rotY(Math.PI/4.0d);
+        rotate.mul(rotateY);
+        TransformGroup transform = new TransformGroup(rotate);
         transform.addChild(new ColorCube(0.3));
         return transform;
     }

@@ -15,9 +15,9 @@ import java.awt.*;
 /**
  * Created by stefanopassador on 03/03/16.
  */
-public class CubesInCircle extends Applet {
-    private int cubesCount = 5;
-    public CubesInCircle() {
+public class Esercizio3_2 extends Applet {
+    private int cubesCount = 10;
+    public Esercizio3_2() {
         setLayout(new BorderLayout());
         GraphicsConfiguration config = SimpleUniverse.getPreferredConfiguration();
         Canvas3D canvas3D = new Canvas3D(config);
@@ -53,7 +53,7 @@ public class CubesInCircle extends Applet {
     }
 
     public static void main(String[] args) {
-        new MainFrame(new CubesInCircle(), 1024, 768);
+        new MainFrame(new Esercizio3_2(), 1024, 768);
     }
 
 }

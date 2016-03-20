@@ -9,8 +9,8 @@ import javax.vecmath.Vector3d;
 import java.applet.Applet;
 import java.awt.*;
 
-public class BaseView extends Applet {
-    public BaseView() {
+public class Esercizio3_3 extends Applet {
+    public Esercizio3_3() {
         setLayout(new BorderLayout()); // Layout manager del container
         // Trova la miglior configurazione grafica per il sistema
         GraphicsConfiguration config = SimpleUniverse.getPreferredConfiguration();
@@ -28,34 +28,34 @@ public class BaseView extends Applet {
          * Codice che risolve l'esercizio 3.3 - punto 1
          * Posiziono l'osservatore sotto la scena, e punto il suo sguardo verso la scena
          */
-        transform.lookAt(new Point3d(0.0, -5, 0),
-                new Point3d(0.0, 0.0, 0.0),
-                new Vector3d(0.0, 0.0, 1.0));
+//        transform.lookAt(new Point3d(0.0, -5, 0),
+//                new Point3d(0.0, 0.0, 0.0),
+//                new Vector3d(0.0, 0.0, 1.0));
 
         /**
          * Codice che risolve l'esercizio 3.3 - punto 2
          * Posiziono l'osservatore sotto la scena, e punto il suo sguardo verso la scena
          */
-        //Definisco la trasformazione da applicare alla ViewPlatform
-        //che mi permette di spostare il punto di fissazione dell'osservatore
-        //verso destra per ottenere un punto di fuga
-//        transform.lookAt(new Point3d(0.0, 0.0,3.0),
+        // Definisco la trasformazione da applicare alla ViewPlatform
+        // che mi permette di spostare il punto di fissazione dell'osservatore
+        // verso sinistra per ottenere un punto di fuga
+//        transform.lookAt(new Point3d(0.0, 0.0, 3.0),
 //                new Point3d(-0.5, 0.0, 0.0),
 //                new Vector3d(0.0, 1.0, 0.0));
 
-        //Definisco la trasformazione da applicare alla ViewPlatform
-        //che mi permette di spostare la testa dell'osservatore verso destra
-        //per ottenere due punti di fuga
-//        transform.lookAt(new Point3d(1.5, 0.0, 4.0),
+        // Definisco la trasformazione da applicare alla ViewPlatform
+        // che mi permette di spostare la testa dell'osservatore verso destra
+        // per ottenere due punti di fuga
+//        transform.lookAt(new Point3d(1.5, 0.0, 2.0),
 //				new Point3d(0.0, 0.0, 0.0),
 //				new Vector3d(0.0, 1.0, 0.0));
 
         //Definisco la trasformazione da applicare alla ViewPlatform
         //che mi permette di spostare la testa dell'osservatore
         //verso un punto sinistro più alto per ottenere tre punti di fuga
-//        transform.lookAt(new Point3d(-1.5, 1.5, 4.0),
-//                new Point3d(0.0, 0.0, 0.0),
-//                new Vector3d(0.0, 1.0, 0.0));
+        transform.lookAt(new Point3d(-1.5, 1.5, 2.0),
+                new Point3d(0.0, 0.0, 0.0),
+                new Vector3d(0.0, 1.0, 0.0));
 
         transform.invert();
         TransformGroup vtg = simpleUniverse.getViewingPlatform().getViewPlatformTransform();
@@ -78,6 +78,6 @@ public class BaseView extends Applet {
 
     public static void main(String[] args) {
         // write your code here
-        new MainFrame(new BaseView(), 500, 500);
+        new MainFrame(new Esercizio3_3(), 500, 500);
     }
 }

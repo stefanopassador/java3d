@@ -16,7 +16,7 @@ import java.awt.*;
  * Created by stefanopassador on 03/03/16.
  */
 public class Esercizio3_2 extends Applet {
-    private static final int CUBES_COUNT = 8;
+    private static final int CUBES_COUNT = 1;
 
     /**
      * Costruttore dell'Applet
@@ -84,6 +84,6 @@ public class Esercizio3_2 extends Applet {
     }
 
     public static void main(String[] args) {
-        new MainFrame(new Esercizio3_2(), 1024, 768);
+        new MainFrame(new Esercizio3_2(), 500, 325);
     }
 }

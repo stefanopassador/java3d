@@ -27,7 +27,7 @@ public class Esercizio3_6 extends Applet {
         simpleU.getViewingPlatform().setNominalViewingTransform();
 
         Transform3D transform = new Transform3D();
-        transform.lookAt(new Point3d(0.0, 0.0, 5.0),
+        transform.lookAt(new Point3d(0.0, 0.0, 10.0),
                 new Point3d(0.0, 0.5, 0.0),
                 new Vector3d(0.0, 0.1, 0.0));
 
@@ -50,23 +50,23 @@ public class Esercizio3_6 extends Applet {
         BranchGroup branchGroup = new BranchGroup(); // Creo un oggetto di tipo BranchGroup
         TransformGroup transform = new TransformGroup(); // Creo un oggetto di tipo TransformGroup
 
-//        Transform3D transformation = new Transform3D();
-//        Transform3D transformation2 = new Transform3D();
-//        transformation.setTranslation(
-//                new Vector3d(0.0, 0.0, -5.0)
-//        );
+        Transform3D transformation = new Transform3D();
+        Transform3D transformation2 = new Transform3D();
+        transformation.setTranslation(
+                new Vector3d(0.0, 0.0, -5.0)
+        );
 //        transformation2.rotZ(Math.PI/5);
 //        transformation2.rotX(-Math.PI/2);
 //
 //        transformation.mul(transformation2);
-//        transform.setTransform(transformation);
+        transform.setTransform(transformation);
 
         Transform3D transform3D = new Transform3D();
         transform3D.rotX(-Math.PI/2);
         transform.setTransform(transform3D);
 
-        transform.addChild(new TrunkedSquarePyramid());
-//        transform.addChild(new MayaPyramid());
+//        transform.addChild(new TrunkedSquarePyramid());
+        transform.addChild(new MayaPyramid());
         branchGroup.addChild(transform); // Aggiunge l'oggetto transform come figlo al BranchGroup
         return branchGroup; //
     }

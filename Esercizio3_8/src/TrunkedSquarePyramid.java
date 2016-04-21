@@ -18,7 +18,7 @@ public class TrunkedSquarePyramid extends Shape3D {
     /**
      * Costruttore
      */
-    public TrunkedSquarePyramid(float bottomWidth, float topWidth, Appearance appearance) {
+    public TrunkedSquarePyramid(float bottomWidth, float topWidth, float height, Appearance appearance) {
         // Numero delle facce
         int faces = 20;
         // Creo un array di Point3f per generare i triangoli che costruiscono il tronco di piramide
@@ -32,11 +32,11 @@ public class TrunkedSquarePyramid extends Shape3D {
             v[i * 2 + 0] = new Point3f(x * bottomWidth, y * bottomWidth, BOTTOM);
             // Imposto il valore del punto in alto, che ha come posizione su z TOP
             // Le coordinate x e y sono divise per 3 per definire la differenza di grandezza dalla base
-            v[i * 2 + 1] = new Point3f(x * topWidth, y * topWidth, TOP);
+            v[i * 2 + 1] = new Point3f(x * topWidth, y * topWidth, BOTTOM + height);
         }
         // Aggiungo gli ultimi angoli che completano la figura
         v[faces * 2 + 0] = new Point3f(0.0f, 1.0f  * bottomWidth, BOTTOM);
-        v[faces * 2 + 1] = new Point3f(0.0f, 1.0f * topWidth, TOP);
+        v[faces * 2 + 1] = new Point3f(0.0f, 1.0f * topWidth, BOTTOM + height);
 
         int[] stripCounts = {(faces + 1) * 2};
         // Creo un TriangleStripArray

@@ -44,7 +44,7 @@ public class Esercizio3_8 extends Applet {
         BranchGroup branchGroup = new BranchGroup(); // Creo un oggetto di tipo BranchGroup
         TransformGroup transformGroup = new TransformGroup();
 
-        transformGroup.addChild(new DoricColumn(COLUMN_HEIGHT));
+        transformGroup.addChild(new DoricColumn(COLUMN_HEIGHT, this));
         branchGroup.addChild(transformGroup);
         branchGroup.addChild(createDirectionalLight());
         return branchGroup;

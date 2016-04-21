@@ -58,9 +58,10 @@ public class Esercizio3_7 extends Applet {
                 transformation.setTranslation(new Vector3f((i - MATRIX_DIM/2) * single_translation, (j - MATRIX_DIM/2) * single_translation, 0.0f));
                 transform.setTransform(transformation);
                 Sphere sphere = new Sphere(0.1f);
-                sphere.setAppearance(noMaterialAppearance);
                 if (i > 0 && j > 0 && i < (MATRIX_DIM - 1) && (j < MATRIX_DIM - 1)) {
-                    sphere = new Sphere(0.1f, Primitive.GEOMETRY_NOT_SHARED | Primitive.GENERATE_NORMALS, appearance);
+                    sphere.setAppearance(appearance);
+                } else {
+                    sphere.setAppearance(noMaterialAppearance);
                 }
                 transform.addChild(sphere);
 

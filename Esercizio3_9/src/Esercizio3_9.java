@@ -58,7 +58,9 @@ public class Esercizio3_9 extends Applet {
     public BranchGroup createSceneGraph() {
         BranchGroup branchGroup = new BranchGroup(); // Creo un oggetto di tipo BranchGroup
         TransformGroup transformGroup = new TransformGroup();
-        Sphere earth = new Sphere(1.0f, Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, createEarthAppearance());
+        Sphere earth = new Sphere(1.0f,
+                Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS,
+                createEarthAppearance());
         transformGroup.addChild(earth);
         branchGroup.addChild(transformGroup);
         branchGroup.addChild(createBackground());

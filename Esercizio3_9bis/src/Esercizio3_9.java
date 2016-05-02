@@ -1,5 +1,6 @@
 import com.sun.j3d.utils.applet.MainFrame;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
+import com.sun.j3d.utils.geometry.ColorCube;
 import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.image.TextureLoader;
@@ -24,7 +25,7 @@ public class Esercizio3_9 extends Applet {
         // Canvas3: si occupa del rendering 3D on-screen e off-screen
         Canvas3D canvas3D = new Canvas3D(config);
         add("Center", canvas3D);
-        BranchGroup scene = createSceneGraph(); // creazione del sottografo principale
+        BranchGroup scene = createSceneGraph2(); // creazione del sottografo principale
         scene.compile();
 
 
@@ -73,6 +74,33 @@ public class Esercizio3_9 extends Applet {
         transformGroup.addChild(moon);
 
         branchGroup.addChild(transformGroup);
+        branchGroup.addChild(createBackground());
+        branchGroup.addChild(createDirectionalLight());
+        return branchGroup;
+    }
+
+    /**
+     * Funzione che crea il sottografo dove la terra ruota
+     * @return il BranchGroup da aggiungere al SimpleUniverse
+     */
+    public BranchGroup createSceneGraph2() {
+        BranchGroup branchGroup = new BranchGroup(); // Creo un oggetto di tipo BranchGroup
+        TransformGroup transformGroup = new TransformGroup();
+        Sphere earth = new Sphere(1.0f, Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, createEarthAppearance());
+        branchGroup.addChild(transformGroup);
+
+        //Imposta la capacita' di scrivere la trasformazione
+        transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+        //Aggiunge al gruppo un cubo colorato
+        transformGroup.addChild(earth);
+        //Crea un behavior
+        RotationBehaviour rotator = new RotationBehaviour(transformGroup);
+        //Imposta un raggio d'azione del behavior
+        BoundingSphere bounds = new BoundingSphere();
+        rotator.setSchedulingBounds(bounds);
+        //aggiunge l'interpolatore alla gruppo di trasformazione
+        branchGroup.addChild(rotator);
+
         branchGroup.addChild(createBackground());
         branchGroup.addChild(createDirectionalLight());
         return branchGroup;

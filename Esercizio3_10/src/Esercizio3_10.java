@@ -57,18 +57,12 @@ public class Esercizio3_10 extends Applet {
 
         branchGroup.addChild(transformGroup);
         branchGroup.addChild(createDirectionalLight());
-//        branchGroup.addChild(createBackground());
         return branchGroup;
     }
 
     private Appearance createAppearance() {
         Appearance appearance = new Appearance();
-//        appearance.setPolygonAttributes(new PolygonAttributes(PolygonAttributes.POLYGON_FILL, PolygonAttributes.CULL_NONE, 0.0f));
-
-//        appearance.setTransparencyAttributes(new TransparencyAttributes(TransparencyAttributes.BLENDED, 0.8f));
-//        appearance.setColoringAttributes(new ColoringAttributes(new Color3f(Color.RED), ColoringAttributes.FASTEST));
-
-        Texture texture = new TextureLoader("pietra.jpg", TextureLoader.GENERATE_MIPMAP, this).getTexture();
+        Texture texture = new TextureLoader("PietraColonna.gif", TextureLoader.GENERATE_MIPMAP, this).getTexture();
         TextureAttributes textureAttributes = new TextureAttributes () ;
         // Impostazioni per fondere il colore dell’oggetto con la texture.
         textureAttributes.setTextureMode(TextureAttributes.MODULATE) ;
@@ -83,20 +77,14 @@ public class Esercizio3_10 extends Applet {
         BoundingSphere bounds = new BoundingSphere(new Point3d(0.0d, 0.0d, 0.0d), 40.0d);
         // Creazione di una luce direzionale
         DirectionalLight lightD1 = new DirectionalLight();
+        lightD1.setDirection(new Vector3f(
+                2.0f,
+                7.0f,
+                -10.0f
+        ));
         // impostazione del bound
         lightD1.setInfluencingBounds(bounds);
         return lightD1;
-    }
-
-    private Background createBackground() {
-        TextureLoader myLoader = new TextureLoader("img/stars.jpg", this);
-        ImageComponent2D myImage = myLoader.getImage();
-        Background myBack = new Background();
-        myBack.setImage(myImage);
-        myBack.setImageScaleMode(Background.SCALE_FIT_MAX);
-        BoundingSphere myBounds = new BoundingSphere(new Point3d(), 1000.0);
-        myBack.setApplicationBounds(myBounds);
-        return myBack;
     }
 
     public static void main(String[] args) {

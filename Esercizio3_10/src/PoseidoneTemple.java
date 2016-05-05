@@ -1,4 +1,5 @@
 import com.sun.j3d.utils.geometry.Box;
+import com.sun.j3d.utils.geometry.Primitive;
 
 import javax.media.j3d.*;
 import javax.vecmath.Color3f;
@@ -40,7 +41,7 @@ public class PoseidoneTemple extends Group {
             float yDim = STAIRS_HEIGHT;
             float zDim = (COLUMN_WIDTH_SIZE * COLUMN_DEPTH / 2) + (STAIRS_DIFFERENCE * (i + 1));
 
-            Box box = new Box(xDim, yDim, zDim, appearance);
+            Box box = new Box(xDim, yDim, zDim, Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
 
             Transform3D transform3D = new Transform3D();
             transform3D.setTranslation(new Vector3d(
@@ -78,11 +79,15 @@ public class PoseidoneTemple extends Group {
     }
 
     private void createRoof1() {
-        Box frontBox = new Box(COLUMN_WIDTH_SIZE * COLUMN_WIDTH / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE / 2, appearance);
-        Box backBox = new Box(COLUMN_WIDTH_SIZE * COLUMN_WIDTH / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE / 2, appearance);
+        Box frontBox = new Box(COLUMN_WIDTH_SIZE * COLUMN_WIDTH / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE / 2,
+                Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
+        Box backBox = new Box(COLUMN_WIDTH_SIZE * COLUMN_WIDTH / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE / 2,
+                Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
 
-        Box leftBox = new Box(COLUMN_WIDTH_SIZE / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE * (COLUMN_DEPTH - 2) / 2 , appearance);
-        Box rightBox = new Box(COLUMN_WIDTH_SIZE / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE * (COLUMN_DEPTH - 2) / 2, appearance);
+        Box leftBox = new Box(COLUMN_WIDTH_SIZE / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE * (COLUMN_DEPTH - 2) / 2 ,
+                Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
+        Box rightBox = new Box(COLUMN_WIDTH_SIZE / 2, ROOF_1_HEIGHT, COLUMN_WIDTH_SIZE * (COLUMN_DEPTH - 2) / 2,
+                Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
 
         TransformGroup tg;
         Transform3D transform3D;

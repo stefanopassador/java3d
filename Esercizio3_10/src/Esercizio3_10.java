@@ -68,7 +68,7 @@ public class Esercizio3_10 extends Applet {
         textureAttributes.setTextureMode(TextureAttributes.MODULATE) ;
         appearance.setTextureAttributes(textureAttributes);
         appearance.setTexture(texture);
-//        appearance.setMaterial(new Material());
+        appearance.setMaterial(new Material());
         return appearance;
     }
 
@@ -78,8 +78,8 @@ public class Esercizio3_10 extends Applet {
         // Creazione di una luce direzionale
         DirectionalLight lightD1 = new DirectionalLight();
         lightD1.setDirection(new Vector3f(
-                2.0f,
-                7.0f,
+                0.0f,
+                -2.0f,
                 -10.0f
         ));
         // impostazione del bound

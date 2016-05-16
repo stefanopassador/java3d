@@ -3,6 +3,7 @@ import com.sun.j3d.utils.geometry.NormalGenerator;
 
 import javax.media.j3d.*;
 import javax.vecmath.Point3f;
+import javax.vecmath.TexCoord2f;
 
 /**
  * Questa figura 3D mostra il tronco di una piramide quadrata.
@@ -15,6 +16,8 @@ public class TrunkedSquarePyramid extends Shape3D {
     protected Point3f v[] = null;
     protected TriangleStripArray triangleStrip = null;
 
+    protected TexCoord2f t[] = null;
+
     /**
      * Costruttore
      */
@@ -23,6 +26,8 @@ public class TrunkedSquarePyramid extends Shape3D {
         int faces = 20;
         // Creo un array di Point3f per generare i triangoli che costruiscono il tronco di piramide
         v = new Point3f[(faces + 1) * 2];
+        t = new TexCoord2f[(faces+1)*2];
+
         for (int i = 0; i < faces; i++) {
             // Calcolo la posizione di ogni punto per le coordinate x e y (x = sin(angle) e y = cos(angle))
             double angle = 2.0 * Math.PI * (double) i / (double) faces;
@@ -33,16 +38,25 @@ public class TrunkedSquarePyramid extends Shape3D {
             // Imposto il valore del punto in alto, che ha come posizione su z TOP
             // Le coordinate x e y sono divise per 3 per definire la differenza di grandezza dalla base
             v[i * 2 + 1] = new Point3f(x * topWidth, y * topWidth, BOTTOM + height);
+
+            t[i*2] = new TexCoord2f((float)((float)i/(float)faces),0.0f);
+            t[i*2+1] = new TexCoord2f((float)((float)i/(float)faces),1.0f);
         }
         // Aggiungo gli ultimi angoli che completano la figura
         v[faces * 2 + 0] = new Point3f(0.0f, 1.0f  * bottomWidth, BOTTOM);
         v[faces * 2 + 1] = new Point3f(0.0f, 1.0f * topWidth, BOTTOM + height);
+        t[faces*2] = new TexCoord2f(1.0f,0.0f);
+        t[faces*2+1] = new TexCoord2f(1.0f,1.0f);
 
         int[] stripCounts = {(faces + 1) * 2};
         // Creo un TriangleStripArray
-        triangleStrip = new TriangleStripArray((faces + 1) * 2, GeometryArray.COORDINATES | GeometryArray.NORMALS, stripCounts);
+        triangleStrip = new TriangleStripArray((faces + 1) * 2,
+                GeometryArray.COORDINATES | GeometryArray.NORMALS | GeometryArray.TEXTURE_COORDINATE_2, stripCounts);
         // Definisco quali coordinate userà il TriangleStripArray
         triangleStrip.setCoordinates(0, v);
+
+        // Imposto le texture coordinates
+        triangleStrip.setTextureCoordinates(0, 0, t);
 
         // Genero e imposto le normali
         GeometryInfo gi = new GeometryInfo ( triangleStrip ) ;

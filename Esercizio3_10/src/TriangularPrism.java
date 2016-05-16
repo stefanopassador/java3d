@@ -17,6 +17,13 @@ public class TriangularPrism extends Shape3D {
     Point3f backR = new Point3f(1.0f, 0.0f, -1.0f);  //back right
     Point3f backL = new Point3f(-1.0f, 0.0f, -1.0f);  //back left
 
+    TexCoord2f frontTopT = new TexCoord2f(0.0f, 1.5f);  //top front
+    TexCoord2f backTopT = new TexCoord2f(0.0f, 1.5f);  //top back
+    TexCoord2f frontLT = new TexCoord2f(-1.0f, 0.0f); //front left
+    TexCoord2f frontRT = new TexCoord2f(1.0f, 0.0f); //front right
+    TexCoord2f backRT = new TexCoord2f(1.0f, 0.0f);  //back right
+    TexCoord2f backLT = new TexCoord2f(-1.0f, 0.0f);  //back left
+
     Point3f[] faces = {
             frontR, frontTop, frontL,
             backR, frontTop, frontR,
@@ -29,10 +36,14 @@ public class TriangularPrism extends Shape3D {
     };
 
     TexCoord2f t[] = {
-            new TexCoord2f(0.0f, 1.0f),
-            new TexCoord2f(0.0f, 0.0f),
-            new TexCoord2f(1.0f, 1.0f),
-            new TexCoord2f(1.0f, 0.0f),
+            frontRT, frontTopT, frontLT,
+            backRT, frontTopT, frontRT,
+            frontTopT, backRT, backTopT,
+            backLT, backTopT, backRT,
+            frontLT, backTopT, backLT,
+            backTopT, frontLT, frontTopT,
+            frontLT, backRT, frontRT,
+            backRT, frontLT, backLT,
     };
 
 

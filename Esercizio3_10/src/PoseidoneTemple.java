@@ -42,6 +42,8 @@ public class PoseidoneTemple extends Group {
             float zDim = (COLUMN_WIDTH_SIZE * COLUMN_DEPTH / 2) + (STAIRS_DIFFERENCE * (i + 1));
 
             Box box = new Box(xDim, yDim, zDim, Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
+//            QuadArray box=new QuadArray(4, QuadArray.COORDINATES| QuadArray.TEXTURE_COORDINATE_2);
+
 
             Transform3D transform3D = new Transform3D();
             transform3D.setTranslation(new Vector3d(

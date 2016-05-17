@@ -37,19 +37,25 @@ public class PoseidoneTemple extends Group {
 
     private void createStairs() {
         for (int i = 0; i < STAIRS_COUNT; i++) {
-            float xDim = (COLUMN_WIDTH_SIZE * COLUMN_WIDTH / 2) + (STAIRS_DIFFERENCE * (i + 1));
+            float xDim = (COLUMN_WIDTH_SIZE * COLUMN_WIDTH / 2) +
+                    (STAIRS_DIFFERENCE * (i + 1));
             float yDim = STAIRS_HEIGHT;
-            float zDim = (COLUMN_WIDTH_SIZE * COLUMN_DEPTH / 2) + (STAIRS_DIFFERENCE * (i + 1));
+            float zDim = (COLUMN_WIDTH_SIZE * COLUMN_DEPTH / 2) +
+                    (STAIRS_DIFFERENCE * (i + 1));
 
-            Box box = new Box(xDim, yDim, zDim, Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
-//            QuadArray box=new QuadArray(4, QuadArray.COORDINATES| QuadArray.TEXTURE_COORDINATE_2);
-
+            Box box = new Box(
+                    xDim,
+                    yDim,
+                    zDim,
+                    Primitive.GENERATE_TEXTURE_COORDS |
+                            Primitive.GENERATE_NORMALS,
+                    appearance);
 
             Transform3D transform3D = new Transform3D();
             transform3D.setTranslation(new Vector3d(
                     0.0,
                     -((COLUMN_HEIGHT / 4.5 * 1.5f) + (STAIRS_HEIGHT) + (i * STAIRS_HEIGHT * 2)),
-                    -COLUMN_WIDTH_SIZE
+                    -COLUMN_WIDTH_SIZE / 2
             ));
 
             TransformGroup tg = new TransformGroup();
@@ -69,8 +75,10 @@ public class PoseidoneTemple extends Group {
                     DoricColumn doricColumn = new DoricColumn(COLUMN_HEIGHT, appearance);
                     tg.addChild(doricColumn);
                     Transform3D transformation = new Transform3D();
-                    float xTranslation = (-(COLUMN_WIDTH_SIZE * COLUMN_WIDTH) / 2) + i * COLUMN_WIDTH_SIZE + COLUMN_WIDTH_SIZE / 2;
-                    float zTranslation = (-(COLUMN_WIDTH_SIZE * COLUMN_DEPTH) / 2) + j * COLUMN_WIDTH_SIZE;
+                    float xTranslation =
+                            (-(COLUMN_WIDTH_SIZE * COLUMN_WIDTH) / 2) + i * COLUMN_WIDTH_SIZE + COLUMN_WIDTH_SIZE / 2;
+                    float zTranslation =
+                            (-(COLUMN_WIDTH_SIZE * COLUMN_DEPTH) / 2) + j * COLUMN_WIDTH_SIZE;
                     transformation.setTranslation(new Vector3d(xTranslation, 0.0f, zTranslation));
 
                     tg.setTransform(transformation);

@@ -54,18 +54,17 @@ public class TriangularPrism extends Shape3D {
 
     protected Geometry createGeometry() {
         TriangleArray triangles;
-        //TriangleArray.COORDINATES mi dice che i triangoli sono formati da un ARRAY DI COORDINATE
-        triangles = new TriangleArray(faces.length, GeometryArray.COORDINATES | GeometryArray.NORMALS |
-                GeometryArray.TEXTURE_COORDINATE_2);
+        triangles = new TriangleArray(faces.length,
+                GeometryArray.COORDINATES |
+                        GeometryArray.NORMALS |
+                        GeometryArray.TEXTURE_COORDINATE_2);
         triangles.setCoordinates(0, faces);
-        //CV:setto le coordinate
         triangles.setTextureCoordinates(0,0, t);
 
         // Genero e imposto le normali
         GeometryInfo gi = new GeometryInfo (triangles);
         NormalGenerator normalGenerator = new NormalGenerator ( );
         normalGenerator.generateNormals(gi) ;
-//        triangleStrip.setNormals(0, gi.getGeometryArray().getNormalRefFloat());
         // Imposto al mio Shape3D quale GeometryArray userò
         return gi.getGeometryArray();
     }

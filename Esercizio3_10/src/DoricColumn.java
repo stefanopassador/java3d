@@ -29,21 +29,34 @@ public class DoricColumn extends Group {
     }
 
     private void addFusto() {
-        // The cylinder
         TransformGroup transformGroupCylinder = new TransformGroup();
-      //Cristian Virgili: aggiunta la creazione delle TEXTURE COORDS
-        transformGroupCylinder.addChild(new Cylinder(height / 4.5f / 2, (height / 4.5f) * 3, Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, 20, 1, appearance));
+        transformGroupCylinder.addChild(new Cylinder(
+                height / 4.5f / 2,
+                (height / 4.5f) * 3,
+                Primitive.GENERATE_TEXTURE_COORDS |
+                        Primitive.GENERATE_NORMALS,
+                20,
+                1,
+                appearance));
         addChild(transformGroupCylinder);
     }
 
     private void addEchino() {
         TransformGroup transformGroupTrunkedPyramid = new TransformGroup();
-        trunkedSquarePyramid = new TrunkedSquarePyramid(height / 4.5f / 2, height / 4.5f, height / 4.5f, appearance);
+        trunkedSquarePyramid = new TrunkedSquarePyramid(
+                height / 4.5f / 2,
+                height / 4.5f,
+                height / 4.5f,
+                appearance);
         transformGroupTrunkedPyramid.addChild(trunkedSquarePyramid);
         Transform3D transformationPyramid = new Transform3D();
         transformationPyramid.rotX((Math.PI / 2) * 3);
         Transform3D transformationPyramid3 = new Transform3D();
-        transformationPyramid3.setTranslation(new Vector3f(0.0f, 0.0f, ((height / 4.5f) * 3) / 2));
+        transformationPyramid3.setTranslation(new Vector3f(
+                0.0f,
+                0.0f,
+                ((height / 4.5f) * 3) / 2)
+        );
         transformationPyramid.mul(transformationPyramid3);
         transformGroupTrunkedPyramid.setTransform(transformationPyramid);
         addChild(transformGroupTrunkedPyramid);
@@ -51,15 +64,22 @@ public class DoricColumn extends Group {
 
     private void addAbaco() {
         TransformGroup transformGroupTrunkedPyramid = new TransformGroup();
-        float size = height / 4.5f; //(height / 5) / (float) Math.sqrt(2.0);
-      //Cristian Virgili: aggiunta la creazione delle TEXTURE COORDS
-        Box box = new Box(size, height / 4.5f / 4, size,Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS, appearance);
+        float size = height / 4.5f;
+        Box box = new Box(
+                size,
+                height / 4.5f / 4,
+                size,
+                Primitive.GENERATE_TEXTURE_COORDS |
+                        Primitive.GENERATE_NORMALS,
+                appearance);
 
         transformGroupTrunkedPyramid.addChild(box);
         Transform3D transformation = new Transform3D();
-        transformation.setTranslation(new Vector3f(0.0f, (((height / 4.5f) * 3) / 2) + height / 4.5f + height / 4.5f / 4, 0.0f));
+        transformation.setTranslation(new Vector3f(
+                0.0f,
+                (((height / 4.5f) * 3) / 2) + height / 4.5f + height / 4.5f / 4,
+                0.0f));
         Transform3D transformation2 = new Transform3D();
-//        transformation2.rotY(Math.PI / 4);
         transformation.mul(transformation2);
         transformGroupTrunkedPyramid.setTransform(transformation);
         addChild(transformGroupTrunkedPyramid);

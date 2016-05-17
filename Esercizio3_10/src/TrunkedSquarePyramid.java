@@ -24,13 +24,9 @@ public class TrunkedSquarePyramid extends Shape3D {
      * Costruttore
      */
     public TrunkedSquarePyramid(float bottomWidth, float topWidth, float height, Appearance appearance) {
-        // Numero delle facce
         int faces = 20;
-        // Creo un array di Point3f per generare i triangoli che costruiscono il tronco di piramide
         v = new Point3f[(faces + 1) * 2];
-        //CV
         t = new TexCoord2f[(faces+1)*2];
-        
         for (int i = 0; i < faces; i++) {
             // Calcolo la posizione di ogni punto per le coordinate x e y (x = sin(angle) e y = cos(angle))
             double angle = 2.0 * Math.PI * (double) i / (double) faces;
@@ -41,8 +37,7 @@ public class TrunkedSquarePyramid extends Shape3D {
             // Imposto il valore del punto in alto, che ha come posizione su z TOP
             // Le coordinate x e y sono divise per 3 per definire la differenza di grandezza dalla base
             v[i * 2 + 1] = new Point3f(x * topWidth, y * topWidth, BOTTOM + height);
-            
-            //CV
+            // Imposto le texture coordinates
             t[i*2] = new TexCoord2f((float)((float)i/(float)faces),0.0f);
 			t[i*2+1] = new TexCoord2f((float)((float)i/(float)faces),1.0f);
             
